@@ -42,28 +42,9 @@ ies:
     forgotPasswordEmailSubject: IES Account recovered
     pwdEmailSentSuccessMsg: Password sent to your email
     accDeActivatedMsg: Account is not Active, For Any Query Contact IES Admin
-    #Ar Module messages
-    #Ar Applicant registration message
-    invalidSSNMsg: Invalide SSN Provided!!
-    unAuthorisedApplicant: "Un-Authorised Applicant to Apply for Plan"
-    applicantRegSuccess: Applicant Registered Successfully with AppId 
-    applicantAlreadyReg: Applicant Already Registered with AppId 
-    updateAppSuccessMsg: Application Updated Successfully
-    updateAppErrMsg: Application Updation Failed
-    internalProblem: Internal Problem Contact Admin
-    #Dc Module Messages
-    appIdSearchFailed: Worng Application Number
-    caseCreationFailed: Case Creation is Failed!!
-    casePlanSelectionFailed: Plan Selection Failed!!
-    caseIncomeSaveFailed: Income Details Not Saved!!
-    caseEducationSaveFailed: Education Details Not Saved!!
-    childDetailsSaveSuccess: Child Details Saved
-    childDetailsSaveFailed: Child Details Not Saved!!
-    childDetailsRetrieveFailed: Child Details Not Found!!
-    childDetailsDeleteSuccess: Child Deleted Successfully
 #Port
 server:
-  port: 8081
+  port: 7070
 #Database connection
 spring:
   jpa:
@@ -71,21 +52,16 @@ spring:
       ddl-auto: create
     properties:
       hibernate:
+      
         show_sql: true
-        format_sql: true    database: h2 
-    console : true
-    path : /h2
-    
-   
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        
   datasource:
-    url: jdbc:h2:file:~/test
-    username: sa
-    password: 
-    driver-class-name: org.h2.Driver
-    
-    
-     
-
+    url: postgres://tjkhmahifxorcr:3b584f1e7a8c4b9633d469eb206bcbaf3f652a0f9b6568be6edc3206b3f6f34e@ec2-34-196-238-94.compute-1.amazonaws.com:5432/d7565o2fmg4koe
+    username: tjkhmahifxorcr
+    password: 3b584f1e7a8c4b9633d469eb206bcbaf3f652a0f9b6568be6edc3206b3f6f34e
+    driver-class-name: org.postgresql.Driver 
 #sending mail
   mail:
     host: smtp.gmail.com
@@ -98,14 +74,9 @@ spring:
           auth: true
           starttls:
             enable: true
-  h2:
-    console:
-      path: /h2
-      enabled: true
-      
 #Loggin
 logging:
-  file: C://IESLogs/IES-App.log
+  file: IES-App.log
   level:
     root: INFO
     com.usa.ri.gov.ies: DEBUG
